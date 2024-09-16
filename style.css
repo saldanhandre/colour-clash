@@ -1,0 +1,116 @@
+body {
+    background-color: #012622;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-menu {
+    text-align: center;
+    color: white;
+}
+
+#main-menu h1 {
+    font-family: 'Calibri', sans-serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#start-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #1982c4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-btn:hover {
+    background-color: #156ca4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stacks the topbar and grid */
+    align-items: center; /* Center the topbar and grid */
+    gap: 20px; /* Space between topbar and grid */
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Adjust the topbar and grid to match width */
+.topbar-container, .grid-container {
+    width: 100%;
+    max-width: 600px; /* Restrict to a reasonable max width */
+}
+
+.topbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    height: 60px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.points-display {
+    color: white;
+    font-size: 70px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Calibri', sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(9, 50px);
+    gap: 8px;
+}
+
+.grid-container div {
+    background-color: #ccc;
+    border: 1px solid transparent;
+    border-radius: 15%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 45px;
+    height: 45px;
+}
+
+.selected {
+    border: 2px solid orange;
+    background-color: #ccc;
+}
+
+.dragging {
+    opacity: 0.7;
+}
+
+.hover {
+    outline: 2px solid orange;
+}
+
+.falling {
+    transition: transform 0.8s ease;
+}
+
+#restart-btn, #shuffle-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#restart-btn i, #shuffle-btn i {
+    color: white;
+    font-size: 25px;
+}
+
+#restart-btn:hover i, #shuffle-btn:hover i {
+    color: #ccc; /* Light gray color on hover */
+}
