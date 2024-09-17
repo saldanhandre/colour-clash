@@ -360,9 +360,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
     // Click event to trigger the flood fill and delete the group
     gridContainer.addEventListener('click', (event) => {
         if (event.target === gridContainer || event.target.classList.contains('invisible')) return; // Ignore invisible cells
