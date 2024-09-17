@@ -32,8 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bannerPoints.textContent = `Points: ${score}`; // Display the points
     }
 
-    // Call this function whenever the game ends to update the banner
-    updateBanner(score);  // For testing, you can use different score values
+    updateBanner(score);  // For testing
 
     // Add Play Again button logic (no need to create a new button)
     playAgainButton.addEventListener('click', () => {
@@ -192,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const isNeighbor = Math.abs(draggedCellPosition - droppedCellPosition) === 1 || Math.abs(draggedCellPosition - droppedCellPosition) === 9;
     
             if (isNeighbor) {
-                // Call the function to animate and swap cells
                 swapCells(draggedCell, droppedCell);
             }
         }
@@ -408,8 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < gridCells.length; i++) {
             if (!visited.has(i) && !gridCells[i].classList.contains('invisible')) {
                 const group = floodFillLimited(i, 3); // Find groups of 1, 2, or 3 rectangles
-                if ((group.length === 1 || group.length === 2 || group.length === 3) && isIsolatedGroup(group)) {
+                if ((group.length === 1 || group.length === 2 || group.length === 3 || group.length === 4) && isIsolatedGroup(group)) {
                     deleteGroup(group); // Delete the group if isolated
+                    findAndDeleteIsolatedGroups();
                 }
             }
         }

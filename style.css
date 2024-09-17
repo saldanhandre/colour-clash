@@ -259,26 +259,44 @@ body {
     color: white;
 }
 
-#end-banner .points {
-    font-size: 20px; /* Smaller font for points */
+#end-banner .banner-message {
+    font-size: 40px; /* Smaller font for points */
+    margin-top: 10px; /* Add space above points */
+}
+
+
+#end-banner .banner-points {
+    font-size: 40px; /* Smaller font for points */
     color: white;    /* Always white */
     margin-top: 10px; /* Add space above points */
 }
 
-/* Styling for the buttons inside the banner */
-#end-banner .banner-button {
+/* Styling for the buttons container */
+#end-banner .banner-buttons {
     display: inline-block;
-    margin-top: 15px;
-    margin-right: 20px; /* Space between buttons */
+}
+
+/* Home Button Styling */
+#home-btn {
+    font-size: 50px;
+    color: white;
     cursor: pointer;
-    font-size: 30px;
-    color: white; /* White icon color */
+    margin-right: 25px; /* Adjust margin for home button */
+    margin-left: 10px; /* Adjust margin for home button */
 }
 
-#end-banner .banner-button i {
-    transition: color 0.3s ease;
+#home-btn:hover {
+    color: #aaa9a9; /* Hover color for home button */
 }
 
-#end-banner .banner-button:hover i {
-    color: #b0b0b0; /* Light gray hover color */
+/* Play Again Button Styling */
+#play-again-btn {
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px; /* Adjust margin for play again button */
+}
+
+#play-again-btn:hover {
+    color: #aaa9a9; /* Hover color for play again button */
 }
