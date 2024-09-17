@@ -9,19 +9,19 @@ body {
 
 #main-menu {
     text-align: center;
+    margin-bottom: 110px;
     color: white;
 }
 
 #main-menu h1 {
     font-family: 'Calibri', sans-serif;
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 80px;
 }
 
 #start-btn {
     padding: 15px 30px;
     font-size: 18px;
-    background-color: #1982c4;
+    background-color: #878787dc;
     color: white;
     border: none;
     border-radius: 5px;
@@ -29,7 +29,7 @@ body {
 }
 
 #start-btn:hover {
-    background-color: #156ca4;
+    background-color: #656565;
 }
 
 .container {
