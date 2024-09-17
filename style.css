@@ -1,5 +1,5 @@
 body {
-    background-color: #012622;
+    background-color: #252525;
     margin: 0;
     height: 100vh;
     display: flex;
@@ -11,25 +11,96 @@ body {
     text-align: center;
     margin-bottom: 110px;
     color: white;
+    position: relative;
 }
 
 #main-menu h1 {
-    font-family: 'Calibri', sans-serif;
-    font-size: 80px;
+    font-family: 'Handjet', sans-serif;
+    font-size: 100px; /* Adjust font size as needed */
+    color: white;
+    text-align: left; /* Align to the left */
+    line-height: 1; /* Adjust line spacing for two lines */
+    margin: 0;
+    font-weight: 550; /* Use the weight value between 100 and 900 */
+    font-variation-settings: "ELGR" 1, "ELSH" 2; /* Set font variation */
+    padding-left: 35px;
+    padding-bottom: 15px;
 }
 
-#start-btn {
-    padding: 15px 30px;
-    font-size: 18px;
-    background-color: #878787dc;
-    color: white;
-    border: none;
-    border-radius: 5px;
+/* Styling for the start icon (play button) */
+#start-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%;
     cursor: pointer;
 }
 
-#start-btn:hover {
-    background-color: #656565;
+#start-icon i {
+    color: white;
+    font-size: 50px;
+    padding-right: 7px;
+}
+
+#start-icon:hover i {
+    color: #d9d9d9; /* Color change on hover */
+}
+
+/* Styling for the howToPlay icon */
+#howToPlay-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+#howToPlay-icon i {
+    color: white;
+    font-size: 54px;
+    padding-right: 7px;
+}
+
+#howToPlay-icon:hover i {
+    color: #d9d9d9; /* Color change on hover */
+}
+
+/* Styling for the rate icon */
+#rate-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+#rate-icon i {
+    color: white;
+    font-size: 50px;
+    padding-right: 7px;
+}
+
+#rate-icon:hover i {
+    color: #d9d9d9; /* Color change on hover */
+}
+
+/* Styling for the settings icon */
+#settings-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+#settings-icon i {
+    color: white;
+    font-size: 50px;
+    padding-right: 7px;
+}
+
+#settings-icon:hover i {
+    color: #d9d9d9; /* Color change on hover */
 }
 
 .container {
@@ -113,4 +184,59 @@ body {
 
 #restart-btn:hover i, #shuffle-btn:hover i {
     color: #ccc; /* Light gray color on hover */
+}
+
+/* Layout for the main menu background */
+.background-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%); /* Fine-tune position behind the title */
+    z-index: 0;
+}
+
+.left-square {
+    display: flex;
+    width: 300px;
+    height: 300px;
+    background-color: #6a4c93;
+    border-radius: 14%; /* Same rounded edges as the game squares */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    align-items: center;      /* Vertically centers the text */
+}
+
+.right-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 142.5px);
+    grid-template-rows: repeat(2, 142.5px);
+    gap: 15px;
+}
+
+.right-grid div {
+    width: 142.5px;
+    height: 142.50px;
+    border-radius: 25%; /* Same rounded edges as the game squares */
+    background-color: #ccc;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Color assignment for the right grid squares */
+.right-grid div:nth-child(1) {
+    background-color: #e63946;
+}
+
+.right-grid div:nth-child(2) {
+    background-color: #ffca3a;
+}
+
+.right-grid div:nth-child(3) {
+    background-color: #6dbc4f;
+}
+
+.right-grid div:nth-child(4) {
+    background-color: #1982c4;
 }

@@ -2,11 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridContainer = document.querySelector('.grid-container');
     const shuffleButton = document.getElementById('shuffle-btn');
     const restartButton = document.getElementById('restart-btn');
-    const startButton = document.getElementById('start-btn');
+    const startIcon = document.getElementById('start-icon');
+    const howToPlayIcon = document.getElementById('howToPlay-icon');
+    const rateIcon = document.getElementById('rate-icon');
+    const settingsIcon = document.getElementById('settings-icon');
     const gameScreen = document.getElementById('game-screen');
     const mainMenu = document.getElementById('main-menu');
     const pointsDisplay = document.getElementById('points');
-    const colors = ['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93']; // The possible colors
+    const colors = ['#e63946', '#f28f3b', '#ffca3a', '#6dbc4f', '#1982c4', '#6a4c93']; // The possible colors
 
     let draggedCell = null;
     let draggedCellPosition = null;
@@ -15,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0; // Initialize score
 
     // Function to start the game
-    startButton.addEventListener('click', () => {
+    startIcon.addEventListener('click', () => {
         mainMenu.style.display = 'none'; // Hide main menu
         gameScreen.style.display = 'block'; // Show game screen
     });
@@ -155,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             droppedCell.classList.remove('swapping');
 
             // Update points after a successful swap
-            updateScore(-3);
+            updateScore(-2);
 
             // After swap, check for isolated groups of 3 and delete them
             findAndDeleteIsolatedGroups();
@@ -398,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to the shuffle button
     shuffleButton.addEventListener('click', () => {
         shuffleColors();
-        updateScore(-1);
+        updateScore(-2);
     });
 
 });
