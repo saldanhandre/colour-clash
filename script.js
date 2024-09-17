@@ -3,19 +3,116 @@ document.addEventListener('DOMContentLoaded', () => {
     const shuffleButton = document.getElementById('shuffle-btn');
     const restartButton = document.getElementById('restart-btn');
     const startIcon = document.getElementById('start-icon');
-    const howToPlayIcon = document.getElementById('howToPlay-icon');
-    const rateIcon = document.getElementById('rate-icon');
-    const settingsIcon = document.getElementById('settings-icon');
     const gameScreen = document.getElementById('game-screen');
     const mainMenu = document.getElementById('main-menu');
     const pointsDisplay = document.getElementById('points');
     const colors = ['#e63946', '#f28f3b', '#ffca3a', '#6dbc4f', '#1982c4', '#6a4c93']; // The possible colors
 
-    let draggedCell = null;
-    let draggedCellPosition = null;
-    let startX, startY;
+    let score = 0; // Replace with actual game score later
 
-    let score = 0; // Initialize score
+    // Get the banner elements
+    const banner = document.getElementById('end-banner');
+    const bannerMessage = document.getElementById('banner-message');
+    const bannerPoints = document.getElementById('banner-points');
+    const playAgainButton = document.getElementById('play-again-btn');
+    const homeButton = document.getElementById('home-btn');
+    
+    // Force the banner to show for testing
+    // banner.style.display = 'block'; // Keep banner visible for testing
+
+    // Set the text and color based on the score
+    function updateBanner(score) {
+        if (score > 0) {
+            bannerMessage.textContent = 'WINNER!';  // Set WINNER text
+            bannerMessage.style.color = '#6dbc4f';  // Set green color for WINNER
+        } else {
+            bannerMessage.textContent = 'LOSER';    // Set LOSER text
+            bannerMessage.style.color = '#e63946';  // Set red color for LOSER
+        }
+        bannerPoints.textContent = `Points: ${score}`; // Display the points
+    }
+
+    // Call this function whenever the game ends to update the banner
+    updateBanner(score);  // For testing, you can use different score values
+
+    // Add Play Again button logic (no need to create a new button)
+    playAgainButton.addEventListener('click', () => {
+        banner.style.display = 'none'; // Hide banner
+        restartGame(); // Call restart logic
+    });
+
+    // Add Go Back Home button logic (no need to create a new button)
+    homeButton.addEventListener('click', () => {
+        banner.style.display = 'none'; // Hide banner
+        goHome(); // Call home logic to reset the game and take user home
+    });
+
+    // Logic to restart the game
+    function restartGame() {
+        const restartButton = document.getElementById('restart-btn');
+        restartButton.click(); // Trigger restart
+    }
+
+    // Logic to take the user back home
+    function goHome() {
+        const gameScreen = document.getElementById('game-screen');
+        const mainMenu = document.getElementById('main-menu');
+        
+        // Hide the game screen and show the main menu
+        gameScreen.style.display = 'none';
+        mainMenu.style.display = 'block';
+
+        // Reset the game state
+        restartGame(); // Reuse restart logic to reset the grid and points
+    }
+
+
+    // Function to check if the grid is empty (no visible squares)
+    function checkIfGridIsEmpty() {
+        const gridCells = Array.from(gridContainer.children);
+        const visibleCells = gridCells.filter(cell => !cell.classList.contains('invisible'));
+        return visibleCells.length === 0; // Returns true if the grid is empty
+    }
+
+    // Function to display the end game banner
+    function displayEndBanner() {
+        if (checkIfGridIsEmpty()) {
+            banner.style.display = 'block';
+            if (score > 0) {
+                bannerMessage.textContent = 'WINNER!';
+                bannerMessage.style.color = '#6dbc4f'; // Set winner color
+            } else {
+                bannerMessage.textContent = 'LOSER';
+                bannerMessage.style.color = '#e63946'; // Set loser color
+            }
+            bannerPoints.textContent = `Points: ${score}`; // Display points
+        }
+    }
+
+    // Function to check if the game has ended
+    function checkGameEnd() {
+        if (checkIfGridIsEmpty()) {
+            displayEndBanner();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     // Function to start the game
     startIcon.addEventListener('click', () => {
@@ -158,10 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
             droppedCell.classList.remove('swapping');
 
             // Update points after a successful swap
-            updateScore(-2);
+            updateScore(-1);
 
             // After swap, check for isolated groups of 3 and delete them
             findAndDeleteIsolatedGroups();
+            checkGameEnd();
         }, 300);  // Time matches the CSS transition duration
     }
 
@@ -224,11 +322,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Update points after a successful deletion
-        updateScore((group.length - 3)*2);
+        if(group.length === 3){
+            updateScore(1);
+        } else {
+            updateScore((group.length - 3)*2);
+        }
         
         // Add a slight delay before applying gravity to show that the blocks are gone
         setTimeout(() => {
             applyGravity(); // Apply gravity after 0.2 seconds
+            checkGameEnd(); // Check if the game has ended
         }, 400); // Adjust the delay time (200ms)
     }
 
@@ -271,6 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+        checkGameEnd(); // Check if the game has ended
     }
 
     function isLastInColumn(position) {
@@ -291,6 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return true; // It's the last rectangle in the column
         }
         return false; // It's not in the last row
+        checkGameEnd(); // Check if the game has ended
     }
 
 
@@ -308,6 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+        checkGameEnd(); // Check if the game has ended
     }
 
     // Function to perform a limited flood fill to find a group of up to 3 neighboring rectangles
@@ -386,6 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // After click, check for isolated groups of 3 and delete them
         findAndDeleteIsolatedGroups();
+        checkGameEnd(); // Check if the game has ended
     });
 
 
